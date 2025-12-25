@@ -1,0 +1,12 @@
+version: 2
+
+models:
+  - name: mrt_glucose_readings_postgres
+    description: "Published glucose readings mart in Postgres for BI access."
+    columns:
+      - name: entry_id
+        description: "Unique identifier for the glucose entry."
+      - name: reading_timestamp
+        description: "Timestamp of the glucose reading."
+      - name: glucose_mg_dl
+        description: "Glucose reading in mg/dL."

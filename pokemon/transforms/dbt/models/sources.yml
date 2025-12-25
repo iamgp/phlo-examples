@@ -1,0 +1,17 @@
+version: 2
+
+sources:
+  - name: dagster_assets
+    database: "{{ target.catalog }}"
+    schema: raw
+    tables:
+      - name: pokemon
+        description: Raw Pokemon data from PokeAPI
+      - name: pokemon_types
+        description: Raw Pokemon types from PokeAPI
+      - name: pokemon_abilities
+        description: Raw Pokemon abilities from PokeAPI
+      - name: pokemon_moves
+        description: Raw Pokemon moves from PokeAPI
+      - name: pokemon_generations
+        description: Raw Pokemon generations from PokeAPI

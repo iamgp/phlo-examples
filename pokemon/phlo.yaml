@@ -1,0 +1,11 @@
+# Pokemon Lakehouse
+# Ingests data from PokeAPI and transforms it into a medallion architecture
+
+name: pokemon-lakehouse
+description: "Pokemon data lakehouse powered by PokeAPI"
+
+# Services configuration
+services:
+  # Disable Superset since we don't need BI for this demo
+  superset:
+    enabled: false

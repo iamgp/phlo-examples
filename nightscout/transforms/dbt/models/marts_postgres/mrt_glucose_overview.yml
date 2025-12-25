@@ -1,0 +1,36 @@
+# mrt_glucose_overview.yml - Schema tests for glucose overview mart
+
+version: 2
+
+models:
+  - name: mrt_glucose_overview
+    description: "PostgreSQL mart providing denormalized daily glucose metrics"
+    config:
+      tags: ["nightscout", "mart", "api", "analyst"]
+    columns:
+      - name: reading_date
+        description: "Date of glucose readings"
+        data_tests:
+          - not_null
+          - unique
+
+      - name: reading_count
+        description: "Number of readings on this date"
+        data_tests:
+          - not_null
+
+      - name: avg_glucose_mg_dl
+        description: "Average glucose level"
+        data_tests: []
+
+      - name: min_glucose_mg_dl
+        description: "Minimum glucose level"
+        data_tests: []
+
+      - name: max_glucose_mg_dl
+        description: "Maximum glucose level"
+        data_tests: []
+
+      - name: time_in_range_pct
+        description: "Percentage of time in range"
+        data_tests: []

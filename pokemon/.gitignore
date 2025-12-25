@@ -1,0 +1,29 @@
+# Python-generated files
+__pycache__/
+*.py[oc]
+build/
+dist/
+wheels/
+*.egg-info
+
+# Virtual environments
+.venv
+
+# Local secrets / env
+.env
+
+# Phlo generated infra
+.phlo/
+
+# Dagster local state
+.tmp_dagster_home_*/
+
+# Logs
+*.log
+
+# dbt build artifacts
+transforms/dbt/target/
+transforms/dbt/logs/
+
+# User-specific dbt profile overlay
+transforms/dbt/profiles/.user.yml
