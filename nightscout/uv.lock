@@ -1045,9 +1045,6 @@ dev = [
     { name = "pytest" },
     { name = "ruff" },
 ]
-plugins = [
-    { name = "phlo-plugin-example" },
-]
 
 [package.metadata]
 requires-dist = [
@@ -1069,7 +1066,6 @@ dev = [
     { name = "pytest", specifier = ">=8.0" },
     { name = "ruff" },
 ]
-plugins = [{ name = "phlo-plugin-example", editable = "../../phlo/examples/phlo-plugin-example" }]
 
 [[package]]
 name = "gql"
@@ -2497,25 +2493,6 @@ requires-dist = [
     { name = "pytest", marker = "extra == 'dev'", specifier = ">=7.0" },
     { name = "pyyaml", specifier = ">=6.0.1" },
     { name = "requests" },
-    { name = "ruff", marker = "extra == 'dev'", specifier = ">=0.1.0" },
-]
-provides-extras = ["dev"]
-
-[[package]]
-name = "phlo-plugin-example"
-version = "1.0.0"
-source = { editable = "../../phlo/examples/phlo-plugin-example" }
-dependencies = [
-    { name = "pandas" },
-    { name = "requests" },
-]
-
-[package.metadata]
-requires-dist = [
-    { name = "pandas", specifier = ">=1.5.0" },
-    { name = "pytest", marker = "extra == 'dev'", specifier = ">=7.0" },
-    { name = "pytest-cov", marker = "extra == 'dev'", specifier = ">=4.0" },
-    { name = "requests", specifier = ">=2.28.0" },
     { name = "ruff", marker = "extra == 'dev'", specifier = ">=0.1.0" },
 ]
 provides-extras = ["dev"]

@@ -62,7 +62,6 @@ glucose-platform/
 │   │   └── nightscout.py      # Raw, Silver, Gold schemas
 │   └── quality/               # Data quality checks (@phlo_quality)
 │       ├── nightscout.py      # Standard quality checks
-│       └── plugin_checks.py   # Plugin-based checks (NEW)
 ├── transforms/dbt/            # dbt transformation models
 │   ├── bronze/               # Staging models (stg_*)
 │   ├── silver/               # Fact tables (fct_*)
@@ -73,7 +72,7 @@ glucose-platform/
 │       └── mrt_glucose_hourly_patterns.sql
 ├── tests/                     # Workflow tests
 ├── .env.example              # Configuration template (ENHANCED)
-└── pyproject.toml            # Project dependencies (with plugins)
+└── pyproject.toml            # Project dependencies
 ```
 
 ## Materializing Assets
@@ -337,77 +336,6 @@ cat .phlo/api/views.sql
 ```
 
 See `.phlo/api/README.md` for complete API documentation and examples.
-
-## Plugins
-
-The glucose platform demonstrates phlo's plugin system by using custom quality checks from third-party packages.
-
-### Installed Plugins
-
-List all installed plugins:
-
-```bash
-phlo plugin list
-```
-
-Output:
-
-```
-Sources:
-  NAME              VERSION  SOURCE
-  jsonplaceholder   1.0.0    phlo-plugin-example
-
-Quality Checks:
-  NAME              VERSION  SOURCE
-  threshold_check   1.0.0    phlo-plugin-example
-
-Transforms:
-  NAME              VERSION  SOURCE
-  uppercase         1.0.0    phlo-plugin-example
-```
-
-### Using Plugin Quality Checks
-
-See `workflows/quality/plugin_checks.py` for examples of using plugin-based quality checks:
-
-```python
-from phlo_example.quality import ThresholdCheck
-
-# Create threshold check with tolerance
-check = ThresholdCheck(
-    column="glucose_mg_dl",
-    max_value=250,      # Flag readings above 250 mg/dL
-    tolerance=0.05      # Allow 5% violation rate
-)
-
-result = check.execute(df)
-# Returns: {"passed": bool, "violations": int, "total": int}
-```
-
-### Installing Plugins
-
-To use plugins in your project:
-
-```bash
-# Install plugin dependencies
-uv sync --group plugins
-
-# Verify plugins are discovered
-phlo plugin list
-
-# Check plugin info
-phlo plugin info threshold_check
-```
-
-### Creating Custom Plugins
-
-See the [phlo-plugin-example](../phlo-plugin-example/README.md) package for a complete guide to creating your own plugins:
-
-- Source connector plugins
-- Quality check plugins
-- Transform plugins
-
-Plugins are discovered via Python entry points, making them easy to develop and share.
 
 ## Observability
 

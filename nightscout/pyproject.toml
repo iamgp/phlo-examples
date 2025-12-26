@@ -23,10 +23,6 @@ dev = [
     "ruff",
 ]
 
-plugins = [
-    "phlo-plugin-example",
-]
-
 # For local development within the monorepo
 [tool.uv.sources]
 phlo = { path = "../../phlo", editable = true }
@@ -41,7 +37,6 @@ phlo-nessie = { path = "../../phlo/packages/phlo-nessie", editable = true }
 phlo-trino = { path = "../../phlo/packages/phlo-trino", editable = true }
 phlo-openmetadata = { path = "../../phlo/packages/phlo-openmetadata", editable = true }
 phlo-quality = { path = "../../phlo/packages/phlo-quality", editable = true }
-phlo-plugin-example = { path = "../plugins/phlo-plugin-example", editable = true }
 
 [tool.ruff]
 line-length = 100
