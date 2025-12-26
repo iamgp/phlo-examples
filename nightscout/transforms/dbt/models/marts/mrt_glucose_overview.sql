@@ -1,4 +1,4 @@
--- mrt_glucose_overview.sql - Glucose overview mart for BI dashboards in PostgreSQL
+-- mrt_glucose_overview.sql - Glucose overview mart for BI dashboards
 -- Incrementally materialized mart providing denormalized daily glucose metrics
 -- Optimized for fast dashboard queries and visualization in Superset
 
@@ -10,11 +10,11 @@
 /*
 Glucose overview mart for BI dashboards
 
-This mart table is materialized in PostgreSQL for fast dashboard queries in
-Superset. It provides a denormalized, aggregated view optimized for
-visualization and reporting.
+This mart table is materialized in the Iceberg marts schema for fast dashboard
+queries. It provides a denormalized, aggregated view optimized for visualization
+and reporting.
 
-Target: PostgreSQL marts schema
+Target: Iceberg marts schema
 Refresh: Every 30 minutes via Dagster schedule
 */
 

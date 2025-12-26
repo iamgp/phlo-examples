@@ -1,10 +1,10 @@
--- mrt_glucose_readings.sql - Gold layer curated fact table for glucose readings
+-- mrt_glucose_readings.sql - Mart layer curated fact table for glucose readings
 -- Provides clean, deduplicated, production-ready glucose data for analytics
 -- Incrementally updated to efficiently handle new readings
 
 {{ config(
     materialized='incremental',
-   unique_key='entry_id',
+    unique_key='entry_id',
     tags=['nightscout', 'curated']
 ) }}
 

@@ -66,8 +66,9 @@ glucose-platform/
 ├── transforms/dbt/            # dbt transformation models
 │   ├── bronze/               # Staging models (stg_*)
 │   ├── silver/               # Fact tables (fct_*)
-│   ├── gold/                 # Aggregations & marts
-│   └── marts_postgres/       # BI-ready tables (API-enabled)
+│   ├── gold/                 # Aggregations
+│   └── marts/                # BI-ready tables
+│       ├── mrt_glucose_readings.sql
 │       ├── mrt_glucose_overview.sql
 │       └── mrt_glucose_hourly_patterns.sql
 ├── tests/                     # Workflow tests

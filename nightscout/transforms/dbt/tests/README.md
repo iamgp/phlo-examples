@@ -37,7 +37,7 @@ This directory contains comprehensive tests for the GitHub analytics workflow in
 - Incremental logic validation
 - Business rule enforcement
 
-### 4. Mart Tests (`models/marts_postgres/*.yml`)
+### 4. Mart Tests (`models/marts/*.yml`)
 
 - Dashboard-ready data validation
 - Aggregation accuracy

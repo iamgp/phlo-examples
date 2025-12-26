@@ -1,4 +1,4 @@
--- mrt_glucose_hourly_patterns.sql - Mart for hourly glucose pattern analysis in PostgreSQL
+-- mrt_glucose_hourly_patterns.sql - Mart for hourly glucose pattern analysis
 -- Aggregates glucose readings by hour and day of week for time-of-day trend analysis
 -- Enables identification of patterns like dawn phenomenon and post-meal spikes
 
@@ -13,8 +13,8 @@ Hourly glucose patterns for time-of-day analysis
 This mart aggregates glucose readings by hour of day to identify patterns
 like dawn phenomenon, post-meal spikes, and overnight trends.
 
-Target: PostgreSQL
-Use case: Heatmaps and time-of-day pattern analysis in Superset
+Target: Iceberg marts schema
+Use case: Heatmaps and time-of-day pattern analysis in BI tools
 */
 
 with date_params as (

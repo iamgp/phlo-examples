@@ -2,7 +2,7 @@ version: 2
 
 models:
   - name: mrt_glucose_readings
-    description: "Gold layer curated fact table for glucose readings"
+    description: "Mart layer curated fact table for glucose readings"
     columns:
       - name: entry_id
         description: "Unique identifier for the glucose entry"
