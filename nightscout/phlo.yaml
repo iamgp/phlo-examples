@@ -10,3 +10,9 @@ description: "glucose-platform data lakehouse"
 #     postgres:
 #       host: custom-host  # Override postgres host
 #   container_naming_pattern: "{project}_{service}"  # Custom naming
+
+infrastructure:
+  services:
+    minio:
+      api_port: 9100
+      console_port: 9101

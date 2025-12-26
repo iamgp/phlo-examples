@@ -4,6 +4,9 @@ config-version: 2
 
 profile: phlo
 
+flags:
+  require_certificate_validation: true
+
 model-paths: ["models"]
 seed-paths: ["seeds"]
 

@@ -36,7 +36,7 @@ After starting, access:
 
 - **Dagster UI**: http://localhost:3000 - Orchestration & monitoring
 - **Trino**: http://localhost:8080 - Query engine
-- **MinIO Console**: http://localhost:9001 - Object storage (minio/minio123)
+- **MinIO Console**: http://localhost:9101 - Object storage (minio/minio123)
 - **Superset**: http://localhost:8088 - BI dashboards (admin/admin)
 - **pgweb**: http://localhost:8081 - Database admin
 

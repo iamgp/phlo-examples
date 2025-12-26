@@ -15,8 +15,9 @@ services:
       - ../tests:/app/tests:ro
       # Mount local phlo source (path set via PHLO_DEV_SOURCE_PATH env var)
       - ${PHLO_DEV_SOURCE_PATH}/src/phlo:/opt/phlo-src/phlo:ro
+      - ${PHLO_DEV_SOURCE_PATH}/examples/phlo-plugin-example/src/phlo_example:/opt/phlo-example/phlo_example:ro
     environment:
-      PYTHONPATH: /opt/dagster:/app:/opt/phlo-src
+      PYTHONPATH: /opt/dagster:/app:/opt/phlo-src:/opt/phlo-example
 
   dagster-daemon:
     build:
@@ -28,5 +29,6 @@ services:
       - ../tests:/app/tests:ro
       # Mount local phlo source
       - ${PHLO_DEV_SOURCE_PATH}/src/phlo:/opt/phlo-src/phlo:ro
+      - ${PHLO_DEV_SOURCE_PATH}/examples/phlo-plugin-example/src/phlo_example:/opt/phlo-example/phlo_example:ro
     environment:
-      PYTHONPATH: /opt/dagster:/app:/opt/phlo-src
+      PYTHONPATH: /opt/dagster:/app:/opt/phlo-src:/opt/phlo-example
