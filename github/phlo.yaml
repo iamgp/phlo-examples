@@ -1,0 +1,9 @@
+# Phlo Project Configuration
+name: github-stats
+description: "github-stats data lakehouse"
+
+infrastructure:
+  services:
+    minio:
+      api_port: 9100
+      console_port: 9101

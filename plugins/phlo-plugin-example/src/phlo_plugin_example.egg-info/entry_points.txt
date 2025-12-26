@@ -1,0 +1,11 @@
+[phlo.plugins.quality]
+threshold_check = phlo_example.quality:ThresholdCheckPlugin
+
+[phlo.plugins.services]
+example_cache = phlo_example.service:ExampleCacheServicePlugin
+
+[phlo.plugins.sources]
+jsonplaceholder = phlo_example.source:JSONPlaceholderSource
+
+[phlo.plugins.transforms]
+uppercase = phlo_example.transform:UppercaseTransformPlugin

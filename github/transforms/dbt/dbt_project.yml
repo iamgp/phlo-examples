@@ -1,0 +1,34 @@
+name: github_stats
+version: 1.0.0
+config-version: 2
+
+profile: phlo
+
+flags:
+  require_certificate_validation: true
+
+model-paths: ["models"]
+seed-paths: ["seeds"]
+
+models:
+  github_stats:
+    +materialized: table
+    bronze:
+      +schema: bronze
+      +materialized: view
+      +tags: ["bronze"]
+    silver:
+      +schema: silver
+      +tags: ["silver"]
+    gold:
+      +schema: gold
+      +tags: ["gold"]
+      +persist_docs: { relation: true, columns: true }
+    marts:
+      +schema: marts
+      +tags: ["mart", "publish"]
+      +materialized: table
+      +post-hook:
+        - "create schema if not exists postgres.marts"
+        - "drop table if exists postgres.marts.{{ this.identifier }}"
+        - "create table postgres.marts.{{ this.identifier }} as select * from {{ this }}"
