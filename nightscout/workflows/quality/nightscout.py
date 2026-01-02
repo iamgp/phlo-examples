@@ -44,6 +44,7 @@ if PHLO_QUALITY_AVAILABLE:
         ],
         group="nightscout",
         blocking=True,
+        partition_column="reading_date",
     )
     def glucose_readings_quality():
         """Declarative quality checks for glucose readings using @phlo_quality."""
@@ -60,6 +61,7 @@ if PHLO_QUALITY_AVAILABLE:
         ],
         group="nightscout",
         blocking=True,
+        partition_column="reading_date",
     )
     def daily_metrics_quality():
         """Declarative quality checks for daily glucose metrics."""
@@ -75,6 +77,7 @@ if PHLO_QUALITY_AVAILABLE:
         ],
         group="nightscout",
         blocking=True,
+        partition_column="reading_date",
     )
     def mrt_glucose_readings_quality():
         """Declarative quality checks for the curated glucose readings mart."""
@@ -90,6 +93,7 @@ if PHLO_QUALITY_AVAILABLE:
         ],
         group="nightscout",
         blocking=True,
+        partition_column="reading_date",
     )
     def mrt_glucose_overview_quality():
         """Declarative quality checks for the glucose overview mart."""
@@ -104,6 +108,7 @@ if PHLO_QUALITY_AVAILABLE:
         ],
         group="nightscout",
         blocking=True,
+        partition_aware=False,
     )
     def mrt_glucose_hourly_patterns_quality():
         """Declarative quality checks for the hourly glucose patterns mart."""
@@ -124,7 +129,7 @@ SELECT
     day_of_week,
     glucose_category,
     is_in_range
-FROM iceberg_dev.silver.fct_glucose_readings
+FROM iceberg.silver.fct_glucose_readings
 """
 
 
@@ -134,7 +139,7 @@ FROM iceberg_dev.silver.fct_glucose_readings
     blocking=True,
     description="Validate processed Nightscout glucose data using Pandera schema validation.",
 )
-def nightscout_glucose_quality_check(context, trino: TrinoResource) -> AssetCheckResult:
+def nightscout_glucose_quality_check(context) -> AssetCheckResult:
     """
     Quality check using Pandera for type-safe schema validation.
 
@@ -152,6 +157,7 @@ def nightscout_glucose_quality_check(context, trino: TrinoResource) -> AssetChec
         context.log.info(f"Validating partition: {partition_date}")
 
     try:
+        trino = _resolve_trino_resource(context)
         with trino.cursor(schema="silver") as cursor:
             cursor.execute(query)
             rows = cursor.fetchall()
@@ -234,6 +240,18 @@ def nightscout_glucose_quality_check(context, trino: TrinoResource) -> AssetChec
         )
 
 
+def _resolve_trino_resource(context) -> TrinoResource:
+    resources = getattr(context, "resources", None)
+    trino = None
+    if resources is not None:
+        trino = getattr(resources, "trino", None)
+        if trino is None and isinstance(resources, dict):
+            trino = resources.get("trino")
+    if trino is None:
+        trino = TrinoResource()
+    return trino
+
+
 DAILY_METRICS_QUERY = """
 SELECT
     reading_date,
@@ -251,7 +269,7 @@ SELECT
     time_below_range_pct,
     time_above_range_pct,
     estimated_a1c_pct
-FROM iceberg_dev.gold.fct_daily_glucose_metrics
+FROM iceberg.gold.fct_daily_glucose_metrics
 """
 
 
@@ -261,7 +279,7 @@ FROM iceberg_dev.gold.fct_daily_glucose_metrics
     blocking=True,
     description="Validate daily glucose metrics using Pandera schema validation.",
 )
-def daily_glucose_metrics_quality_check(context, trino: TrinoResource) -> AssetCheckResult:
+def daily_glucose_metrics_quality_check(context) -> AssetCheckResult:
     """
     Quality check for daily glucose metrics fact table.
 
@@ -278,6 +296,7 @@ def daily_glucose_metrics_quality_check(context, trino: TrinoResource) -> AssetC
         context.log.info(f"Validating partition: {partition_date}")
 
     try:
+        trino = _resolve_trino_resource(context)
         with trino.cursor(schema="gold") as cursor:
             cursor.execute(query)
             rows = cursor.fetchall()
