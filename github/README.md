@@ -69,9 +69,9 @@ github/
 │   │       ├── user_profile.py # User profile snapshots (merge)
 │   │       ├── user_repos.py   # Repository metadata (merge)
 │   │       └── user_events.py  # Activity events (append)
-│   └── schemas/                # Pandera validation schemas
-│       └── github.py           # GitHub data schemas
-├── transforms/dbt/             # dbt transformation models
+│   ├── schemas/                # Pandera validation schemas
+│   │   └── github.py           # GitHub data schemas
+│   └── transforms/dbt/         # dbt transformation models
 ├── tests/                      # Comprehensive test suite
 │   └── test_merge_strategies.py  # 367 lines of merge tests
 ├── phlo.yaml                   # Infrastructure configuration

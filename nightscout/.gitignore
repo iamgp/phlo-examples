@@ -26,12 +26,12 @@ htmlcov/
 .phlo/dagster/logs/
 
 # dbt user config
-transforms/dbt/profiles/.user.yml
+workflows/transforms/dbt/profiles/.user.yml
 
 # dbt
-transforms/dbt/target/
-transforms/dbt/dbt_packages/
-transforms/dbt/logs/
+workflows/transforms/dbt/target/
+workflows/transforms/dbt/dbt_packages/
+workflows/transforms/dbt/logs/
 
 # IDE
 .idea/

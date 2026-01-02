@@ -53,7 +53,7 @@ class RawGlucoseEntries(PhloSchema):
 # =============================================================================
 
 _dbt_model_path = (
-    Path(__file__).parent.parent.parent
+    Path(__file__).parent.parent
     / "transforms"
     / "dbt"
     / "models"

@@ -22,8 +22,8 @@ wheels/
 *.log
 
 # dbt build artifacts
-transforms/dbt/target/
-transforms/dbt/logs/
+workflows/transforms/dbt/target/
+workflows/transforms/dbt/logs/
 
 # User-specific dbt profile overlay
-transforms/dbt/profiles/.user.yml
+workflows/transforms/dbt/profiles/.user.yml

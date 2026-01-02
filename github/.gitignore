@@ -25,9 +25,9 @@ htmlcov/
 .phlo/docker-compose.yml.bak
 
 # dbt artifacts
-transforms/dbt/target/
-transforms/dbt/logs/
-transforms/dbt/dbt_packages/
+workflows/transforms/dbt/target/
+workflows/transforms/dbt/logs/
+workflows/transforms/dbt/dbt_packages/
 
 # Temporary/working files
 WORKING.md
